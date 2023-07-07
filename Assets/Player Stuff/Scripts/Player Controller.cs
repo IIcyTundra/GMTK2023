@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum PlayerState
-{
-    Idle,
-    Walking,
-    Attacking,
-    Stunned
 
-}
+
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerState
+    {
+        Idle,
+        Walking,
+        Attacking,
+        Stunned
+
+    }
     [SerializeField] private PlayerStats P_Reference;
     [SerializeField] private PlayerState P_S;
+
+    [SerializeField] private float CurrentPlayerSpeed;
+    [SerializeField] private float CurrentPlayerHealth;
+    [SerializeField] private float CurrentPlayerMana;
     private Rigidbody2D PlayerRb;
     private Vector2 Movement;
 
@@ -21,14 +27,19 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        CurrentPlayerSpeed = P_Reference._playerSpeed;
+        CurrentPlayerHealth = P_Reference._playerHealth;
+        CurrentPlayerMana =  P_Reference._playerMana;
         PlayerRb = GetComponent<Rigidbody2D>();
     }
 
+
     private void Update()
     {
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveY = Input.GetAxisRaw("Vertical");
+        
+        GetInput();
         StateMachine();
+
     }
 
     private void FixedUpdate()
@@ -39,12 +50,14 @@ public class PlayerController : MonoBehaviour
     #region Player Movement
     private void GetInput()
     {
+        moveX = Input.GetAxis("Horizontal");
+        moveY = Input.GetAxis("Vertical");
         Movement = new Vector2(moveX, moveY).normalized;
     }
 
     private void MovePlayer()
     {
-        PlayerRb.velocity = Movement * P_Reference.PlayerSpeed;
+        PlayerRb.velocity = Movement * CurrentPlayerSpeed;
     }
     #endregion
 
@@ -52,28 +65,45 @@ public class PlayerController : MonoBehaviour
     #region State Machine
     private void StateMachine()
     {
-        if(moveX != 0 && moveY != 0)
+        //Determine Player State
+        if(moveX != 0 || moveY != 0 )
         {
             P_S = PlayerState.Walking;
+        }
+        else if(Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Button Pressed");
+            P_S = PlayerState.Stunned;
         }
         else
         {
             P_S = PlayerState.Idle;
         }
+
+
+        //Change State
         switch(P_S)
         {
             case PlayerState.Idle:
                 break;
             case PlayerState.Walking:
-                GetInput();
                 break;
             case PlayerState.Attacking:
                 break;
             case PlayerState.Stunned:
-                //P_Reference.PlayerSpeed *= (Some Speed Debuff)
+                StartCoroutine(StunDuration(3f));
                 break;
         }
     }
 
     #endregion
+
+
+    IEnumerator StunDuration(float timer)
+    {
+        CurrentPlayerSpeed *= 0.2f;
+        yield return new WaitForSeconds(timer);
+        //P_Reference.PlayerSpeed 
+        CurrentPlayerSpeed = P_Reference._playerSpeed;
+    }
 }
