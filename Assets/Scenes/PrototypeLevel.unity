@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  bulletCheckRadius: 5
 --- !u!50 &485991672
 Rigidbody2D:
   serializedVersion: 4

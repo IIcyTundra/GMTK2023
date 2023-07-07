@@ -5,6 +5,7 @@ using UnityEngine;
 public class Protag:MonoBehaviour
 {
     public float speed = 4f;
+    public float bulletCheckRadius = 5f;
     private float moveX;
     private float moveY;
 	private Rigidbody2D rb;
@@ -28,7 +29,7 @@ public class Protag:MonoBehaviour
     private float resetSubstate = 0f;
     void AIStates()
     {
-        foreach (Collider2D collider in Physics2D.OverlapCircleAll(transform.position, 5f))
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(transform.position, bulletCheckRadius))
         {
             if (collider.tag == "Bullet")
                 state = "Dodge";
@@ -36,6 +37,9 @@ public class Protag:MonoBehaviour
         switch (state)
         {
             case "Idle":
+                resetSubstate -= Time.deltaTime;
+                moveX = 0f;
+                moveY = 0f;
                 if (resetSubstate == 0f) // substate countdown
                 {
                     resetSubstate = Random.Range(1f,7f);
@@ -72,8 +76,29 @@ public class Protag:MonoBehaviour
                     moveY = -1f;
             break;
             case "Dodge":
-                //print("AAAAAA");
+                bool keepDodging = false;
+                foreach (Collider2D collider in Physics2D.OverlapCircleAll(transform.position, bulletCheckRadius))
+                {
+                    if (collider.tag == "Bullet")
+                    {
+                        keepDodging = true;
+                        Vector3 dir = -(collider.gameObject.transform.position - transform.position);
+                        moveX = dir.x;
+                        moveY = dir.y;
+                    }
+                }
+                if (!keepDodging)
+                    state = Random.Range(0,2) == 0 ? "Idle" : "Move";
             break;
         }
+        // dont leave the camera
+        if (moveX < 0f && transform.position.x < -9.9f)
+            moveX = 1;
+        if (moveX > 0f && transform.position.x > 9.9f)
+            moveX = -1;
+        if (moveY < 0f && transform.position.y < -4.9f)
+            moveY = 1;
+        if (moveY > 0f && transform.position.y > 4.9f)
+            moveY = -1;
     }
 }
