@@ -10,32 +10,23 @@ public class TestBullets:MonoBehaviour
     private float timer = 0f;
     void Update()
     {
-        CallBullet();
-        RemoveBullet();
+        if(Input.GetKeyDown(KeyCode.E))
+            StartCoroutine(CallBullet(5));
+    }
+
+
+    public IEnumerator CallBullet(float remove)
+    {
         
-    }
-
-
-    public void CallBullet()
-    {
-        timer -= Time.deltaTime;
-        if (timer < 0.1f)
+        bulletObj = ObjectPooling.GiveObj(0);
+        if (bulletObj != null)
         {
-            timer = bulletTime;
-            bulletObj = BulletBehavior.GiveObj(0);
-            if (W_Bullet != null)
-            {
-                bulletObj.transform.position += new Vector3(Random.Range(-9f,9f),0f,0f);
-                W_Bullet.SetActive(true);
-            }
+            bulletObj.transform.position += new Vector3(Random.Range(-9f,9f),0f,0f);
+            bulletObj.SetActive(true);
         }
-    }
+        yield return new WaitForSeconds(remove);
 
-    public void RemoveBullet()
-    {
-        if (bulletObj.transform.position.y < -7f)
-        {
-            BulletBehavior.Takeobj(bulletObj);
-        }
+        ObjectPooling.Takeobj(bulletObj);
     }
 }
+
