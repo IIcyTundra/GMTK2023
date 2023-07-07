@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerHealth: 100
   _playerMana: 100
-  _playerSpeed: 5.05
+  _playerSpeed: 2.58
