@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerState
-{
-    Idle,
-    Walking,
-    Attacking,
-    Stunned
 
-}
 public class PlayerController : MonoBehaviour
 {
+    public enum PlayerState
+    {
+        Idle,
+        Walking,
+        Attacking,
+        Stunned
+
+    }
     [SerializeField] private PlayerStats P_Reference;
     [SerializeField] private PlayerState P_S;
 
-    [SerializedField] private float CurrentPlayerSpeed;
-    [SerializedField] private float CurrentPlayerHealth;
-    [SerializedField] private float CurrentPlayerMana;
+    [SerializeField] private float CurrentPlayerSpeed;
+    [SerializeField] private float CurrentPlayerHealth;
+    [SerializeField] private float CurrentPlayerMana;
     private Rigidbody2D PlayerRb;
     private Vector2 Movement;
 
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Attacking:
                 break;
             case PlayerState.Stunned:
-                StartCourotine(StunDuration(3f));
+                StartCoroutine(StunDuration(3f));
                 break;
         }
     }
@@ -100,9 +101,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator StunDuration(float timer)
     {
-        
         CurrentPlayerSpeed *= 0.2f;
-        yield return new WaitforSeconds(timer);
+        yield return new WaitForSeconds(timer);
         //P_Reference.PlayerSpeed 
         CurrentPlayerSpeed = P_Reference._playerSpeed;
     }

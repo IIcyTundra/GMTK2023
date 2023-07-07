@@ -6,9 +6,9 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject 
 {
     //Variables
-    [SerializeField] private float _playerHealth {get; set;} = 100;
-    [SerializeField] private float _playerMana {get; set;} = 100;
-    [SerializeField, Range(0.1f, 10f)] private float _playerSpeed {get; set;}
+    public float _playerHealth {get; set;} = 100;
+    public float _playerMana {get; set;} = 100;
+    public float _playerSpeed {get; set;} = 5;
 
    
 }
