@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerStats P_Reference;
     [SerializeField] private PlayerState P_S;
+
+    [SerializedField] private float CurrentPlayerSpeed;
+    [SerializedField] private float CurrentPlayerHealth;
+    [SerializedField] private float CurrentPlayerMana;
     private Rigidbody2D PlayerRb;
     private Vector2 Movement;
 
@@ -22,23 +26,18 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        CurrentPlayerSpeed = P_Reference._playerSpeed;
+        CurrentPlayerHealth = P_Reference._playerHealth;
+        CurrentPlayerMana =  P_Reference._playerMana;
         PlayerRb = GetComponent<Rigidbody2D>();
     }
 
-    private void Start() 
-    {
-        
-    }
 
     private void Update()
     {
         GetInput();
         StateMachine();
 
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            P_S = PlayerState.Stunned;
-        }
     }
 
     private void FixedUpdate()
@@ -56,7 +55,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        PlayerRb.velocity = Movement * P_Reference.PlayerSpeed;
+        PlayerRb.velocity = Movement * CurrentPlayerSpeed;
     }
     #endregion
 
@@ -65,9 +64,14 @@ public class PlayerController : MonoBehaviour
     private void StateMachine()
     {
         //Determine Player State
-        if(moveX > 0.1f || moveY > 0.1f )
+        if(moveX != 0 || moveY != 0 )
         {
             P_S = PlayerState.Walking;
+        }
+        else if(Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Button Pressed");
+            P_S = PlayerState.Stunned;
         }
         else
         {
@@ -85,10 +89,21 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Attacking:
                 break;
             case PlayerState.Stunned:
-                P_Reference.PlayerSpeed *= 0.5f;
+                StartCourotine(StunDuration(3f));
                 break;
         }
     }
 
     #endregion
+
+
+
+    IEnumerator StunDuration(float timer)
+    {
+        
+        CurrentPlayerSpeed *= 0.2f;
+        yield return new WaitforSeconds(timer);
+        //P_Reference.PlayerSpeed 
+        CurrentPlayerSpeed = P_Reference._playerSpeed;
+    }
 }
