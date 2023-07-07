@@ -10,5 +10,7 @@ public class PlayerStats : ScriptableObject
     public float _playerMana {get; set;} = 100;
     public float _playerSpeed {get; set;} = 5;
 
+    public List<GameObject> PlayerSkills = new List<GameObject>();
+
    
 }

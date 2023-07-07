@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooting : MonoBehaviour
+public class Skills : MonoBehaviour
 {
-    private PlayerState ShootCheck;
-    private PlayerController StateAccess;
+    [SerializeField] private PlayerController StateAccess;
     
     void Awake()
     {

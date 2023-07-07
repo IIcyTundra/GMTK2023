@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
         GetInput();
         StateMachine();
 
@@ -96,7 +97,6 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-
 
 
     IEnumerator StunDuration(float timer)
