@@ -276,37 +276,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3683568661446649249, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3683568661446649249, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5819031863367854769, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
       propertyPath: m_Name
       value: LevelUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6637026944057915516, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
-      propertyPath: m_Value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6637026944057915516, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
-      propertyPath: m_HandleRect
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6637026944057915516, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7380750692513107506, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7380750692513107506, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8728195053550234633, guid: 8b75a3b91ce444f0cb104bfa0de3390b, type: 3}
       propertyPath: m_Pivot.x
