@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum PlayerState
 {
     Idle,
@@ -24,11 +25,20 @@ public class PlayerController : MonoBehaviour
         PlayerRb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start() 
+    {
+        
+    }
+
     private void Update()
     {
-        moveX = Input.GetAxisRaw("Horizontal");
-        moveY = Input.GetAxisRaw("Vertical");
+        GetInput();
         StateMachine();
+
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            P_S = PlayerState.Stunned;
+        }
     }
 
     private void FixedUpdate()
@@ -39,6 +49,8 @@ public class PlayerController : MonoBehaviour
     #region Player Movement
     private void GetInput()
     {
+        moveX = Input.GetAxis("Horizontal");
+        moveY = Input.GetAxis("Vertical");
         Movement = new Vector2(moveX, moveY).normalized;
     }
 
@@ -52,7 +64,8 @@ public class PlayerController : MonoBehaviour
     #region State Machine
     private void StateMachine()
     {
-        if(moveX != 0 && moveY != 0)
+        //Determine Player State
+        if(moveX > 0.1f || moveY > 0.1f )
         {
             P_S = PlayerState.Walking;
         }
@@ -60,17 +73,19 @@ public class PlayerController : MonoBehaviour
         {
             P_S = PlayerState.Idle;
         }
+
+
+        //Change State
         switch(P_S)
         {
             case PlayerState.Idle:
                 break;
             case PlayerState.Walking:
-                GetInput();
                 break;
             case PlayerState.Attacking:
                 break;
             case PlayerState.Stunned:
-                //P_Reference.PlayerSpeed *= (Some Speed Debuff)
+                P_Reference.PlayerSpeed *= 0.5f;
                 break;
         }
     }
