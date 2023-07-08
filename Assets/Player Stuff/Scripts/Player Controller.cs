@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     }
     [SerializeField] private PlayerStats P_Reference;
     [SerializeField] private PlayerState P_S;
-
+    
     private float CurrentPlayerSpeed;
     private float CurrentPlayerHealth;
     private float CurrentPlayerMana;
@@ -69,11 +69,6 @@ public class PlayerController : MonoBehaviour
         if(moveX != 0 || moveY != 0 )
         {
             P_S = PlayerState.Walking;
-        }
-        else if(Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("Button Pressed");
-            P_S = PlayerState.Stunned;
         }
         else
         {

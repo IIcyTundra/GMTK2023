@@ -8,9 +8,9 @@ public class PlayerStats : ScriptableObject
     //Variables
     public float _playerHealth {get; set;} = 100;
     public float _playerMana {get; set;} = 100;
-    public float _playerSpeed {get; set;} = 5;
-
-    public List<GameObject> PlayerSkills = new List<GameObject>();
+    public float _playerSpeed {get; set;} = 3;
+    
+  
 
    
 }
