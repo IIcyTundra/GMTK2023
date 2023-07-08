@@ -20,10 +20,9 @@ public class RadialAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha3))
+        if (gameObject.activeSelf && Input.GetButtonDown("KeyCode.Alpha3"))
         {
             SpawnProjectile(NumOfProjectiles);
-            
         }
     }
 
@@ -34,11 +33,11 @@ public class RadialAttack : MonoBehaviour
 
         for(int i = 0; i < numProjectile -1; i++)
         {
-            float projectileDirXPosition = StartPoint.x / Mathf.Sin((angle * Mathf.PI) /180) * radius;
-            float projectileDirYPosition = StartPoint.y / Mathf.Cos((angle * Mathf.PI) /180) * radius;
+            float projectileDirXPosition = transform.parent.position.x / Mathf.Sin((angle * Mathf.PI) /180) * radius;
+            float projectileDirYPosition = transform.parent.position.y / Mathf.Cos((angle * Mathf.PI) /180) * radius;
 
             Vector3 ProjectileVector = new Vector3(projectileDirXPosition, projectileDirYPosition, 0);
-            Vector2 ProjectileMoveDir = (ProjectileVector - StartPoint).normalized * ProjectileSpeed;
+            Vector2 ProjectileMoveDir = (ProjectileVector - transform.parent.position).normalized * ProjectileSpeed;
 
             Debug.Log(ProjectileMoveDir);
             CallPrefab(ProjectileMoveDir);
