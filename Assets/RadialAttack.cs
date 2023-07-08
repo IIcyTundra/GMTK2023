@@ -21,36 +21,41 @@ public class RadialAttack : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            StartPoint = transform.position;
             SpawnProjectile(NumOfProjectiles);
+            
         }
     }
 
     private void SpawnProjectile(int numProjectile)
     {
-        float angleStep = 360;
+        float angleStep = 360 / numProjectile;
         float angle = 0;
 
         for(int i = 0; i < numProjectile -1; i++)
         {
             float projectileDirXPosition = StartPoint.x / Mathf.Sin((angle * Mathf.PI) /180) * radius;
-            float projectileDirYPosition = StartPoint.y / Mathf.Sin((angle * Mathf.PI) /180) * radius;
+            float projectileDirYPosition = StartPoint.y / Mathf.Cos((angle * Mathf.PI) /180) * radius;
 
             Vector3 ProjectileVector = new Vector3(projectileDirXPosition, projectileDirYPosition, 0);
-            Vector3 ProjectileMoveDir = (ProjectileVector - StartPoint).normalized * ProjectileSpeed;
+            Vector2 ProjectileMoveDir = (ProjectileVector - StartPoint).normalized * ProjectileSpeed;
 
-            ProjectilePrefab = ObjectPooling.GiveObj(0);
-            if (ProjectilePrefab != null)
-            {
-                ProjectilePrefab.transform.SetPositionAndRotation(transform.position, transform.rotation);
-                ProjectilePrefab.SetActive(true);
-            }
-
-            ProjectilePrefab.transform.SetPositionAndRotation(StartPoint, Quaternion.identity);
-            ProjectilePrefab.GetComponent<Rigidbody>().velocity = new Vector3(ProjectileMoveDir.x, 0, ProjectileMoveDir.y);
+            Debug.Log(ProjectileMoveDir);
+            CallPrefab(ProjectileMoveDir);
 
             angle += angleStep;
         }
 
+    }
+
+    private void CallPrefab(Vector2 _ProjectileMoveDir)
+    {
+        ProjectilePrefab = ObjectPooling.GiveObj(0);
+        if (ProjectilePrefab != null)
+        {
+            ProjectilePrefab.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            ProjectilePrefab.SetActive(true);
+        }
+
+        ProjectilePrefab.GetComponent<Rigidbody2D>().velocity = _ProjectileMoveDir;
     }
 }
