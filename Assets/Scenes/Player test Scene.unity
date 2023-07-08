@@ -418,6 +418,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Solar Flare
       objectReference: {fileID: 0}
+    - target: {fileID: 5579889012225166525, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
+      propertyPath: ProjectileSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579889012225166525, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
+      propertyPath: NumOfProjectiles
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579889012225166525, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
+      propertyPath: ProjectilePrefab
+      value: 
+      objectReference: {fileID: 1071132080392678962, guid: 6d166b3c9302cbb49b1dd1c7fdd3b238, type: 3}
     - target: {fileID: 5945086951321652699, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
       propertyPath: rotationSpeed
       value: 100
@@ -672,7 +684,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 1}
+    oldSize: {x: 1, y: 2}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -681,6 +693,71 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &1715674917
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3557977984081920077, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: ObjectsList.Array.data[0].numberObjects
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7263869140196671784, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7506675477296950717, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
+      propertyPath: m_Name
+      value: Object Creator
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c478c81e845d01d4cbf976cd13ff4f10, type: 3}
 --- !u!1 &1734248656
 GameObject:
   m_ObjectHideFlags: 0
