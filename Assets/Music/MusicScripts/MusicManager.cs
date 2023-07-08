@@ -27,7 +27,7 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
-        
+        CheckForDeath();
     }
 
     public enum Track
@@ -51,4 +51,18 @@ public class MusicManager : MonoBehaviour
         audioSource.clip = musicTracks[trackIndex];
         audioSource.Play();
     }
+
+    private void CheckForDeath()
+    {
+        /*If player dies()
+         * {
+         *     AudioClip[]++;
+         *     audioSource.Play();
+         * }
+         */
+
+    }
+
+
+
 }

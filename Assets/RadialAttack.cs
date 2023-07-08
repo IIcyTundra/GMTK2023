@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RadialAttack : MonoBehaviour
 {
-
+    
     [Header("Projectile Settings")]
     public int NumOfProjectiles;
     public float ProjectileSpeed;
@@ -14,6 +14,7 @@ public class RadialAttack : MonoBehaviour
     [Header("Priv Variables")]
     private Vector3 StartPoint;
     private const float radius = 1f;
+
 
 
     // Update is called once per frame
