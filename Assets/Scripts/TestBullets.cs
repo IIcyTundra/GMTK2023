@@ -22,11 +22,11 @@ public class TestBullets:MonoBehaviour
         if (timer < 0.1f)
         {
             timer = bulletTime;
-            bulletObj = BulletBehavior.GiveObj(0);
-            if (W_Bullet != null)
+            bulletObj = ObjectPooling.GiveObj(0);
+            if (bulletObj != null)
             {
                 bulletObj.transform.position += new Vector3(Random.Range(-9f,9f),0f,0f);
-                W_Bullet.SetActive(true);
+                bulletObj.SetActive(true);
             }
         }
     }
@@ -35,7 +35,7 @@ public class TestBullets:MonoBehaviour
     {
         if (bulletObj.transform.position.y < -7f)
         {
-            BulletBehavior.Takeobj(bulletObj);
+            ObjectPooling.Takeobj(bulletObj);
         }
     }
 }

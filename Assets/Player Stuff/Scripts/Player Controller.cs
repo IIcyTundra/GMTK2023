@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerStats P_Reference;
     [SerializeField] private PlayerState P_S;
 
-    [SerializeField] private float CurrentPlayerSpeed;
-    [SerializeField] private float CurrentPlayerHealth;
-    [SerializeField] private float CurrentPlayerMana;
+    private float CurrentPlayerSpeed;
+    private float CurrentPlayerHealth;
+    private float CurrentPlayerMana;
     private Rigidbody2D PlayerRb;
     private Vector2 Movement;
 
