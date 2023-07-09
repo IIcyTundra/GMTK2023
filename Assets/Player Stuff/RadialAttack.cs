@@ -60,9 +60,9 @@ public class RadialAttack : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
         }
-
-        cooldownController.StartCoroutine(cooldownController.StartCooldown());
         Invoke("SkillCooldown", Cooldown);
+        //cooldownController.StartCoroutine(cooldownController.StartCooldown());
+        
     }
     public bool Get_CanUse()
     {
@@ -72,7 +72,7 @@ public class RadialAttack : MonoBehaviour
 
     private void CallPrefab()
     {
-        ProjectilePrefab = ObjectPooling.GiveObj(1);
+        ProjectilePrefab = ObjectPooling.GiveObj(0);
         if (ProjectilePrefab != null)
         {
             ProjectilePrefab.transform.SetPositionAndRotation(transform.position, transform.rotation);

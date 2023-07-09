@@ -17,8 +17,7 @@ public class SkillSliderController : MonoBehaviour
     private void Awake()
     {
         sl = gameObject.GetComponent<Slider>();
-        solarFlare = player.transform.Find("SkillHandler/Solar Flare").gameObject;
-        ra = solarFlare.GetComponent<RadialAttack>();
+        ra = GameObject.Find("Solar Flare").GetComponent<RadialAttack>();
     }
 
     void Start()
