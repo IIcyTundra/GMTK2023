@@ -26,7 +26,7 @@ public class CursorController : MonoBehaviour
 
     void MouseCalc()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = GameObject.Find("Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
 
         direction = mousePos - player.position;
