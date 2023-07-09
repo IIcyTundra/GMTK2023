@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,23 +9,46 @@ public class SkillSliderController : MonoBehaviour
     [SerializeField] private Slider sl;
     private float cooldownTime;
     private float timeRemaining;
-    private bool isCooldown;
+    private bool readyForCooldown = true;
 
-    [SerializeField] private RadialAttack ra;
+    [SerializeField] private GameObject solarFlare;
+    private RadialAttack ra;
     // Start is called before the first frame update
     private void Awake()
     {
         sl = gameObject.GetComponent<Slider>();
+        ra = solarFlare.GetComponent<RadialAttack>();
     }
 
     void Start()
     {
-        
+        sl.maxValue = cooldownTime;
+        sl.value = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!ra.Get_CanUse() && readyForCooldown)
+        {
+            StartCoroutine(StartCooldown());
+        }
+    }
+
+    private IEnumerator StartCooldown()
+    {
+        readyForCooldown = false;
+        timeRemaining = cooldownTime;
+        sl.value = timeRemaining;
+
+        while (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            sl.value = Mathf.Lerp(cooldownTime, 1 - (timeRemaining / cooldownTime), 0);
+            yield return null;
+        }
+
+        sl.value = 0;
+        readyForCooldown = true;
     }
 }
