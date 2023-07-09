@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class RadialAttack : MonoBehaviour
 {
     
@@ -16,10 +17,12 @@ public class RadialAttack : MonoBehaviour
     private Vector3 StartPoint;
     private const float radius = 1f;
     bool _CanUse;
+    AudioSource SkillSfx;
 
     private void Start()
     {
         _CanUse = true;
+        SkillSfx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -34,6 +37,7 @@ public class RadialAttack : MonoBehaviour
     IEnumerator ShootWave()
     {
         _CanUse = false;
+        
         float angleStep = 360f / numProjectiles;
 
         for (int i = 0; i < numProjectiles; i++)
@@ -59,7 +63,7 @@ public class RadialAttack : MonoBehaviour
 
     private void CallPrefab()
     {
-        ProjectilePrefab = ObjectPooling.GiveObj(0);
+        ProjectilePrefab = ObjectPooling.GiveObj(1);
         if (ProjectilePrefab != null)
         {
             ProjectilePrefab.transform.SetPositionAndRotation(transform.position, transform.rotation);
@@ -69,6 +73,7 @@ public class RadialAttack : MonoBehaviour
 
     private void SkillCooldown()
     {
+        Debug.Log("Skil3 Back!");
         _CanUse = true;
     }
 
