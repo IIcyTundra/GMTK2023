@@ -15,7 +15,7 @@ public class RadialAttack : MonoBehaviour
     [Header("Priv Variables")]
     private Vector3 StartPoint;
     private const float radius = 1f;
-    bool _CanUse;
+    [SerializeField] bool _CanUse;
 
     private void Start()
     {

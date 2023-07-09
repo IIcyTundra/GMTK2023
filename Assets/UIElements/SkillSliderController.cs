@@ -11,12 +11,14 @@ public class SkillSliderController : MonoBehaviour
     private float timeRemaining;
     private bool readyForCooldown = true;
 
-    [SerializeField] private GameObject solarFlare;
+    [SerializeField] private GameObject player;
+    private GameObject solarFlare;
     private RadialAttack ra;
     // Start is called before the first frame update
     private void Awake()
     {
         sl = gameObject.GetComponent<Slider>();
+        solarFlare = player.transform.Find("Solar Flare").gameObject;
         ra = solarFlare.GetComponent<RadialAttack>();
     }
 
@@ -29,15 +31,12 @@ public class SkillSliderController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!ra.Get_CanUse() && readyForCooldown)
-        {
-            StartCoroutine(StartCooldown());
-        }
+        
     }
 
     private IEnumerator StartCooldown()
     {
-        readyForCooldown = false;
+        
         timeRemaining = cooldownTime;
         sl.value = timeRemaining;
 
@@ -49,6 +48,6 @@ public class SkillSliderController : MonoBehaviour
         }
 
         sl.value = 0;
-        readyForCooldown = true;
+       
     }
 }
