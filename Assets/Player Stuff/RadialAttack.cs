@@ -25,7 +25,7 @@ public class RadialAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha3) && _CanUse)
+        if (Input.GetKeyDown(KeyCode.Alpha3) && _CanUse == true)
         {
             StartCoroutine(ShootWave());
         }
@@ -33,6 +33,7 @@ public class RadialAttack : MonoBehaviour
 
     IEnumerator ShootWave()
     {
+        _CanUse = false;
         float angleStep = 360f / numProjectiles;
 
         for (int i = 0; i < numProjectiles; i++)
@@ -47,8 +48,8 @@ public class RadialAttack : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        _CanUse = false;
-        Invoke("SkillCooldown", 4);
+        
+        Invoke("SkillCooldown", Cooldown);
     }
 
     private void CallPrefab()

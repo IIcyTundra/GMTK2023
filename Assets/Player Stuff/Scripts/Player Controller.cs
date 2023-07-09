@@ -15,9 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerStats P_Reference;
     [SerializeField] private PlayerState P_S;
     
-    private float CurrentPlayerSpeed;
-    private float CurrentPlayerHealth;
-    private float CurrentPlayerMana;
     private Rigidbody2D PlayerRb;
     private Vector2 Movement;
 
@@ -26,9 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        CurrentPlayerSpeed = P_Reference.PlayerHealth;
-        CurrentPlayerHealth = P_Reference.PlayerMana;
-        CurrentPlayerMana =  P_Reference.PlayerSpeed;
+
         PlayerRb = GetComponent<Rigidbody2D>();
     }
 
@@ -56,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        PlayerRb.velocity = Movement * CurrentPlayerSpeed;
+        PlayerRb.velocity = Movement * P_Reference.PlayerSpeed;
     }
     #endregion
 
@@ -85,7 +80,7 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Attacking:
                 break;
             case PlayerState.Stunned:
-                StartCoroutine(StunDuration(3f));
+                //StartCoroutine(StunDuration(3f));
                 break;
         }
     }
@@ -93,11 +88,11 @@ public class PlayerController : MonoBehaviour
     #endregion
 
 
-    IEnumerator StunDuration(float timer)
-    {
-        CurrentPlayerSpeed *= 0.2f;
-        yield return new WaitForSeconds(timer);
-        //P_Reference.PlayerSpeed 
-        CurrentPlayerSpeed = P_Reference.PlayerSpeed;
-    }
+    //IEnumerator StunDuration(float timer)
+    //{
+    //    CurrentPlayerSpeed *= 0.2f;
+    //    yield return new WaitForSeconds(timer);
+    //    //P_Reference.PlayerSpeed 
+    //    CurrentPlayerSpeed = P_Reference.PlayerSpeed;
+    //}
 }
