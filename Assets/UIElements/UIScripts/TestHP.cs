@@ -18,11 +18,11 @@ public class TestHP : MonoBehaviour
 #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.G))
         {
-            ps._playerHealth += 5;
+            ps.PlayerHealth += 5;
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            ps._playerHealth -= 5;
+            ps.PlayerHealth -= 5;
         }
 #endif
     }

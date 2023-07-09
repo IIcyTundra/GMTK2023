@@ -10,6 +10,7 @@ public class RadialAttack : MonoBehaviour
     public int numProjectiles = 10;
     public float waveRadius = 5f;
     public float waveSpeed = 5f;
+    public float Cooldown = 15f;
 
     [Header("Priv Variables")]
     private Vector3 StartPoint;
@@ -58,7 +59,6 @@ public class RadialAttack : MonoBehaviour
             ProjectilePrefab.transform.SetPositionAndRotation(transform.position, transform.rotation);
             ProjectilePrefab.SetActive(true);
         }
-
     }
 
     private void SkillCooldown()

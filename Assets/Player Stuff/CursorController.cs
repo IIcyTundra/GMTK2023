@@ -17,10 +17,8 @@ public class CursorController : MonoBehaviour
 
     private void Update()
     {
-        
         MouseCalc();
         SpriteSpin();
-        
     }
 
 
