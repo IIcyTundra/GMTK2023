@@ -89,3 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38e5c761505d1c41b5cd6e0ff179f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 5000096608399489513}
+  numProjectiles: 10
+  waveRadius: 5
+  waveSpeed: 5
+  Cooldown: 15
