@@ -5,35 +5,33 @@ using UnityEngine;
 public class Ai_Pathfinding : MonoBehaviour
 {
 
-    private const float SPEED = 30f;
+    //public float speed;
+    //public Transform target;
+    //public float minimumDistance;
 
-    private EnemyMain enemyMain;
-    private List<Vector3> pathVectorList;
-    private int currentPathIndex;
-    private float pathfindingTimer;
-    private Vector3 moveDir;
-    private Vector3 lastMoveDir;
 
-    private void Awake()
-    {
-        enemyMain = GetComponent<EnemyMain>();
-    }
+    //public GameObject heroBullet;
+    //public float timeBetweenShots;
+    //public float nextShootTime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        pathfindingTimer = Time.deltaTime;
+    //// Update is called once per frame
+    //void Update()
+    //{
 
-        HandleMovement();
-    }
+    //    if (Time.time > nextShotTime)
+    //    {
 
-    private void FixedUpdate()
-    {
-        enemyMain.EnemyRb2D.velocity = moveDir * SPEED;
-    }
+    //    }
+    //    if(Vector2.Distance(transform.position, target.position) > minimumDistance)
+    //    {
+    //        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+    //    }
+    //    else
+    //    {
+    //        //Attack
 
-    private void HandleMovement()
-    {
+    //    }
+    //}
 
-    }
+
 }
