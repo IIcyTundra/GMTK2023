@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DialogueSystem:MonoBehaviour
@@ -9,6 +10,7 @@ public class DialogueSystem:MonoBehaviour
     [Header("Dialogue")]
     public float dialogueSpeed = 0.03f;
     public string[] dialogue;
+    public Sprite[] sprites;
     [Header("Objects")]
     public GameObject Left;
     public GameObject Right;
@@ -45,17 +47,18 @@ public class DialogueSystem:MonoBehaviour
     {
         if (Input.GetButtonDown("Submit"))
         {
-            if (currentDialogue >= dialogue.Length)
-                print("end here or somehtinggg");
-            else
+            //if (currentDialogue >= dialogue.Length)
+            //    SceneManager.LoadScene("scene name");
+            //else
                 StartCoroutine(TypeText());
         }
     }
 
-    IEnumerator CharacterFade(GameObject obj, float duration, float origin, float offset)
+    IEnumerator CharacterFade(GameObject obj, float duration, float origin, float offset, int port)
     {
         RectTransform objTransform = obj.GetComponent<RectTransform>();
         Image objImage = obj.GetComponent<Image>();
+        objImage.sprite = sprites[port];
         objTransform.anchoredPosition = new Vector3(origin + offset, objTransform.anchoredPosition.y, 0f);
         Color32 startColor = objImage.color;
         startColor = new Color32(startColor.r, startColor.g, startColor.b, (byte)0);
@@ -74,15 +77,16 @@ public class DialogueSystem:MonoBehaviour
         string dialogueSplit = dialogue[currentDialogue];
         string currentText = "";
         bool rightside = false;
-        if (dialogueSplit.Contains("*"))
+        int port = 0;
+        if (dialogueSplit.Contains("^"))
         {
-            rightside = dialogueSplit.Split("*")[0].ToLower() == "right";
-            dialogueSplit = dialogueSplit.Split("*")[1];
+            rightside = dialogueSplit.Split("^")[0].ToLower() == "right";
+            port = int.Parse(dialogueSplit.Split("^")[1]);
+            dialogueSplit = dialogueSplit.Split("^")[2];
         }
-        
         Right.SetActive(rightside);
         Left.SetActive(!rightside);
-        StartCoroutine(CharacterFade(rightside ? Antag : Protag, 0.4f, rightside ? antagX : protagX, rightside ? 100 : -100));
+        StartCoroutine(CharacterFade(rightside ? Antag : Protag, 0.4f, rightside ? antagX : protagX, rightside ? 100 : -100, port));
 
         for (int i = 0; i < dialogueSplit.Length; i++)
         {
