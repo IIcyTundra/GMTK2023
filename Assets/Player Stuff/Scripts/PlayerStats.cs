@@ -6,11 +6,33 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject 
 {
     //Variables
-    public float _playerHealth {get; set;} = 100;
-    public float _playerMana {get; set;} = 100;
-    public float _playerSpeed {get; set;} = 2;
-    
-  
+    [SerializeField] private float _playerHealth  = 100;
+    [SerializeField] private float _playerMana  = 100;
+    [SerializeField, Range(0f,100f)] private float _playerSpeed  = 2;
 
-   
+
+    public float PlayerHealth
+    {
+        get{ return _playerHealth;}
+
+        set{ _playerHealth = value; }
+    }
+
+    public float PlayerMana
+    {
+        get { return _playerMana; }
+
+        set { _playerMana = value; }
+    }
+
+    public float PlayerSpeed
+    {
+        get { return _playerSpeed; }
+
+        set { _playerSpeed = value; }
+    }
+
+
+
+
 }

@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
         Walking,
         Attacking,
         Stunned
-
     }
     [SerializeField] private PlayerStats P_Reference;
     [SerializeField] private PlayerState P_S;
@@ -27,9 +26,9 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        CurrentPlayerSpeed = P_Reference._playerSpeed;
-        CurrentPlayerHealth = P_Reference._playerHealth;
-        CurrentPlayerMana =  P_Reference._playerMana;
+        CurrentPlayerSpeed = P_Reference.PlayerHealth;
+        CurrentPlayerHealth = P_Reference.PlayerMana;
+        CurrentPlayerMana =  P_Reference.PlayerSpeed;
         PlayerRb = GetComponent<Rigidbody2D>();
     }
 
@@ -99,6 +98,6 @@ public class PlayerController : MonoBehaviour
         CurrentPlayerSpeed *= 0.2f;
         yield return new WaitForSeconds(timer);
         //P_Reference.PlayerSpeed 
-        CurrentPlayerSpeed = P_Reference._playerSpeed;
+        CurrentPlayerSpeed = P_Reference.PlayerSpeed;
     }
 }

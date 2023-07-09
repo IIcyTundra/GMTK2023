@@ -595,6 +595,10 @@ PrefabInstance:
       value: Solar Flare
       objectReference: {fileID: 0}
     - target: {fileID: 5579889012225166525, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
+      propertyPath: numProjectiles
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579889012225166525, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
       propertyPath: ProjectileSpeed
       value: 10
       objectReference: {fileID: 0}
@@ -612,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 6794806330218705802}
     - target: {fileID: 5945086951321652699, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
       propertyPath: rotationSpeed
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7237276924704859167, guid: 56db1384fccef0e47a4bd5436556fea5, type: 3}
       propertyPath: m_RootOrder
