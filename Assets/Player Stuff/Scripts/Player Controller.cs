@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
         PlayerRb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        MusicManager.Instance.PlayTrack(MusicManager.Track.CombatTrack);
+    }
 
     private void Update()
     {

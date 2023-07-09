@@ -61,7 +61,7 @@ public class RadialAttack : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         Invoke("SkillCooldown", Cooldown);
-        //cooldownController.StartCoroutine(cooldownController.StartCooldown());
+        cooldownController.StartCoroutine(cooldownController.StartCooldown());
         
     }
     public bool Get_CanUse()
