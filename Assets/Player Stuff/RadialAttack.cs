@@ -51,6 +51,11 @@ public class RadialAttack : MonoBehaviour
         
         Invoke("SkillCooldown", Cooldown);
     }
+    public bool Get_CanUse()
+    {
+        return _CanUse;
+    }
+
 
     private void CallPrefab()
     {
