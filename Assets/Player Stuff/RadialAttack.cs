@@ -26,7 +26,7 @@ public class RadialAttack : MonoBehaviour
 
     private void Awake()
     {
-        cooldownController = cooldownSlider.GetComponent<SkillSliderController>();
+        //cooldownController = cooldownSlider.GetComponent<SkillSliderController>();
     }
     private void Start()
     {
