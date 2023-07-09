@@ -26,7 +26,7 @@ public class RadialAttack : MonoBehaviour
 
     private void Awake()
     {
-        //cooldownController = cooldownSlider.GetComponent<SkillSliderController>();
+        cooldownController = cooldownSlider.GetComponent<SkillSliderController>();
     }
     private void Start()
     {
@@ -60,8 +60,9 @@ public class RadialAttack : MonoBehaviour
 
             yield return new WaitForSeconds(0.1f);
         }
-        Invoke("SkillCooldown", Cooldown);
         cooldownController.StartCoroutine(cooldownController.StartCooldown());
+        Invoke("SkillCooldown", Cooldown);
+        
         
     }
     public bool Get_CanUse()

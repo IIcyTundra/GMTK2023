@@ -9,9 +9,7 @@ public class TestHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!PauseManager.instance.isPaused) {
-            // shoot
-        }
+        
     }
 
     // Update is called once per frame

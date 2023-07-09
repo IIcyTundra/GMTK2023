@@ -47,9 +47,9 @@ public class DialogueSystem:MonoBehaviour
     {
         if (Input.GetButtonDown("Submit"))
         {
-            //if (currentDialogue >= dialogue.Length)
-            //    SceneManager.LoadScene("scene name");
-            //else
+            if (currentDialogue >= dialogue.Length)
+                SceneManager.LoadScene("Player test Scene");
+            else
                 StartCoroutine(TypeText());
         }
     }
