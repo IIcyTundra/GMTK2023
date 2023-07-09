@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02794b0d8420494683196723ffb08a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletLifetime: 5
+  bulletLifetime: 3
 --- !u!82 &6982663461276552619
 AudioSource:
   m_ObjectHideFlags: 0
