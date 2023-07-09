@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Title Screen.unity
     guid: 5707eae6b2f2d44c097d19fa827ec4e1
   - enabled: 1
-    path: Assets/Scenes/UITest2.unity
-    guid: 395553ce6038a4591bfded0e7a310373
+    path: Assets/Scenes/DialogueTest.unity
+    guid: 6704cae5a662f924496929e688747cd4
+  - enabled: 1
+    path: Assets/Scenes/Player test Scene.unity
+    guid: 30d66f7e1dce0434fba590364cd160f7
   m_configObjects: {}

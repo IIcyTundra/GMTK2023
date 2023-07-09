@@ -549,7 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pressAnyText: {fileID: 4404469459429837396}
   playButton: {fileID: 209715199611937536}
-  nextSceneName: UITest3
+  nextSceneName: DialogueTest
 --- !u!1001 &4612679753384390781
 PrefabInstance:
   m_ObjectHideFlags: 0
