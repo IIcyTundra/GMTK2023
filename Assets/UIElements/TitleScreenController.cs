@@ -15,6 +15,7 @@ public class TitleScreenController : MonoBehaviour
     {
         pressAnyText.gameObject.SetActive(true);
         playButton.SetActive(false);
+        MusicManager.Instance.PlayTrack(MusicManager.Track.MainMenuTrack);
     }
 
     // Update is called once per frame
