@@ -46,6 +46,7 @@ public class RadialAttack : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        _CanUse = false;
         Invoke("SkillCooldown", 4);
     }
 

@@ -7,14 +7,16 @@ public class Bullet_Behavior : MonoBehaviour
     public float bulletLifetime;
 
 
-    public void Awake()
+    public void Update()
     {
-        Invoke("RemoveBullet", bulletLifetime);
+        if(gameObject.activeSelf)
+            StartCoroutine(RemoveBullet(bulletLifetime));
     }
 
 
-    public void RemoveBullet()
+    public IEnumerator RemoveBullet(float time)
     {
+        yield return new WaitForSeconds(time);
         ObjectPooling.Takeobj(gameObject);
     }
 }
