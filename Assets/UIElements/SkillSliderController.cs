@@ -9,7 +9,6 @@ public class SkillSliderController : MonoBehaviour
     [SerializeField] private Slider sl;
     private float cooldownTime;
     private float timeRemaining;
-    private bool readyForCooldown = true;
 
     [SerializeField] private GameObject player;
     private GameObject solarFlare;
@@ -24,6 +23,7 @@ public class SkillSliderController : MonoBehaviour
 
     void Start()
     {
+        cooldownTime = ra.Cooldown;
         sl.maxValue = cooldownTime;
         sl.value = 0;
     }
@@ -36,14 +36,13 @@ public class SkillSliderController : MonoBehaviour
 
     public IEnumerator StartCooldown()
     {
-        
         timeRemaining = cooldownTime;
         sl.value = timeRemaining;
 
         while (timeRemaining > 0)
         {
             timeRemaining -= Time.deltaTime;
-            sl.value = Mathf.Lerp(cooldownTime, 1 - (timeRemaining / cooldownTime), 0);
+            sl.value = Mathf.Lerp(cooldownTime, 0, 1 - (timeRemaining / cooldownTime));
             yield return null;
         }
 
