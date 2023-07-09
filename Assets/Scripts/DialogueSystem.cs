@@ -22,6 +22,7 @@ public class DialogueSystem:MonoBehaviour
     private float antagX;
     void Start()
     {
+        MusicManager.Instance.PlayTrack(MusicManager.Track.NonCombatTrack);
         if (Left == null)
             Left = GameObject.Find("Leftside");
         if (Right == null)

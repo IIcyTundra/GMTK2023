@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        MusicManager.Instance.PlayTrack(MusicManager.Track.NonCombatTrack);
+        MusicManager.Instance.PlayTrack(MusicManager.Track.CombatTrack);
     }
 
     private void Update()
