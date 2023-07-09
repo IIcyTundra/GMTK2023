@@ -16,6 +16,7 @@ public class Bullet_Behavior : MonoBehaviour
     }
 
 
+
     public IEnumerator RemoveBullet(float time)
     {
         yield return new WaitForSeconds(time);
