@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RadialAttack : MonoBehaviour
 {
@@ -17,6 +18,14 @@ public class RadialAttack : MonoBehaviour
     private const float radius = 1f;
     [SerializeField] bool _CanUse;
 
+    [Header("UI")]
+    [SerializeField] private Slider cooldownSlider;
+    private SkillSliderController cooldownController;
+
+    private void Awake()
+    {
+        cooldownController = cooldownSlider.GetComponent<SkillSliderController>();
+    }
     private void Start()
     {
         _CanUse = true;
@@ -48,7 +57,7 @@ public class RadialAttack : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
-        
+        cooldownController.StartCoroutine(cooldownController.StartCooldown());
         Invoke("SkillCooldown", Cooldown);
     }
     public bool Get_CanUse()

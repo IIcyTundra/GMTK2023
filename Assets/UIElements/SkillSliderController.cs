@@ -18,7 +18,7 @@ public class SkillSliderController : MonoBehaviour
     private void Awake()
     {
         sl = gameObject.GetComponent<Slider>();
-        solarFlare = player.transform.Find("Solar Flare").gameObject;
+        solarFlare = player.transform.Find("SkillHandler/Solar Flare").gameObject;
         ra = solarFlare.GetComponent<RadialAttack>();
     }
 
@@ -34,7 +34,7 @@ public class SkillSliderController : MonoBehaviour
         
     }
 
-    private IEnumerator StartCooldown()
+    public IEnumerator StartCooldown()
     {
         
         timeRemaining = cooldownTime;
