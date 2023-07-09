@@ -57,7 +57,7 @@ public class Skills_Handler : MonoBehaviour
     private void Update() {
         previousSelectedWeapon = selectedWeapon;
         KeySwap();
-        ScrollSwap();
+        //ScrollSwap();
         timeSinceLastSwitch += Time.deltaTime;
     }
 
@@ -80,36 +80,36 @@ public class Skills_Handler : MonoBehaviour
         if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
     }
 
-    private void ScrollSwap()
-    {
-        float ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
-        if(ScrollWheel > 0f)
-        {
-            if((selectedWeapon >= transform.childCount-1) && (timeSinceLastSwitch >= SwapTime))
-            {
-                selectedWeapon = 0;
-                if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
-            }
-            else if(timeSinceLastSwitch >= SwapTime)
-            {
-                selectedWeapon++;
-                if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
-            }
-        }
-        else if (ScrollWheel < 0f) 
-        {
-            if((selectedWeapon <= 0) && (timeSinceLastSwitch >= SwapTime))
-            {
-                selectedWeapon = transform.childCount-1;
-                if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
-            }
-            else if(timeSinceLastSwitch >= SwapTime){
-                selectedWeapon--;
-                if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
-            }
-        }
+    //private void ScrollSwap()
+    //{
+    //    float ScrollWheel = Input.GetAxis("Mouse ScrollWheel");
+    //    if(ScrollWheel > 0f)
+    //    {
+    //        if((selectedWeapon >= transform.childCount-1) && (timeSinceLastSwitch >= SwapTime))
+    //        {
+    //            selectedWeapon = 0;
+    //            if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
+    //        }
+    //        else if(timeSinceLastSwitch >= SwapTime)
+    //        {
+    //            selectedWeapon++;
+    //            if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
+    //        }
+    //    }
+    //    else if (ScrollWheel < 0f) 
+    //    {
+    //        if((selectedWeapon <= 0) && (timeSinceLastSwitch >= SwapTime))
+    //        {
+    //            selectedWeapon = transform.childCount-1;
+    //            if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
+    //        }
+    //        else if(timeSinceLastSwitch >= SwapTime){
+    //            selectedWeapon--;
+    //            if (previousSelectedWeapon != selectedWeapon) Select(selectedWeapon);
+    //        }
+    //    }
 
 
-    }
+    //}
 
 }
